@@ -1,0 +1,60 @@
+.global-title {
+  display: flex;
+  justify-content: center;
+  font-family: "Bitter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  margin-top: 1%;
+}
+
+.sidebar-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  background-image: url("../../../assets/img/sidebar-4.svg");
+  height: 23px;
+  width: 23px;
+  margin: 0.35% 0% 0% 1%;
+}
+
+.search-block {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -2%;
+}
+
+.search-img {
+  background-image: url("../../../assets/img/magnifier_icon-icons.com_67993.svg");
+  height: 20px;
+  width: 20px;
+  margin-right: 0.7%;
+}
+
+.search-input {
+  float: right;
+  width: 8%;
+  border: 1px solid gray;
+  border-radius: 3px;
+  outline: none;
+  padding: 2px;
+}
+
+.join-button {
+    background-color: #e4e4e4;
+    color: #222222;
+    border: none;
+    margin-left: 1%;
+    margin-right: 1%;
+    font-size: 14px;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.header-hr {
+    height: 0.5px;
+    margin-bottom: 2.2%;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Bitter&display=swap");
