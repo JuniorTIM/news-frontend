@@ -18,6 +18,16 @@
   margin: 0.35% 0% 0% 1%;
 }
 
+.close-sidebar {
+  background-color: transparent;
+  color: white;
+  border: none;
+  float: right;
+  cursor: pointer;
+  margin-right: 4%;
+  margin-top: -7%;
+}
+
 .search-block {
   display: flex;
   justify-content: flex-end;
@@ -28,33 +38,92 @@
   background-image: url("../../../assets/img/magnifier_icon-icons.com_67993.svg");
   height: 20px;
   width: 20px;
+  margin-top: 0.3%;
   margin-right: 0.7%;
-}
-
-.search-input {
-  float: right;
-  width: 8%;
-  border: 1px solid gray;
-  border-radius: 3px;
-  outline: none;
-  padding: 2px;
+  cursor: pointer;
 }
 
 .join-button {
-    background-color: #e4e4e4;
-    color: #222222;
-    border: none;
-    margin-left: 1%;
-    margin-right: 1%;
-    font-size: 14px;
-    padding: 5px;
-    cursor: pointer;
-    border-radius: 2px;
+  background-color: #e4e4e4;
+  color: #222222;
+  border: none;
+  margin-left: 1%;
+  margin-right: 1%;
+  font-size: 14px;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 2px;
 }
 
 .header-hr {
-    height: 0.5px;
-    margin-bottom: 2.2%;
+  margin-bottom: 2.2%;
 }
+
+.openSearch {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 8%;
+  top: 8%;
+  padding: 18px;
+  box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.55);
+  background-color: white;
+  border-radius: 2px;
+}
+
+.search-input {
+  outline: none;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 160px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: rgb(50, 50, 50); /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 22px;
+  color: #818181;
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Style page content */
+.main {
+  margin-left: 160px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+/* .close-search-btn {
+  color: red;
+  background-color: transparent;
+  cursor: pointer;
+  width: 5px;
+  margin-left: 95%;
+  border: none;
+}
+
+<button className='close-search-btn' onClick={handleSearch}>x</button> */
 
 @import url("https://fonts.googleapis.com/css2?family=Bitter&display=swap");
