@@ -1,0 +1,26 @@
+.newse {
+    display: flex;
+    flex-direction: column;
+    background-color: none;
+}
+
+.news-im {
+    width: 350px;
+    height: 350px;
+    margin-left: 35%;
+    margin-top: 2%;
+    box-shadow: 0px 3px 10px 2px rgba(34, 60, 80, 0.2);
+}
+
+.news-titl {
+    font-size: 26px;
+    /* margin-left: 15%; */
+    text-align: center;
+    margin-bottom: 2.5%;
+}
+
+.news-tex {
+    width: 40%;
+    margin-left: 31%;
+    margin-bottom: 2.5%;
+}

@@ -17,7 +17,7 @@ export const getNews = createAsyncThunk('news/get', async (_, thunkAPI) => {
 })
 
 export const newsSlice = createSlice({
-    name: "categories",
+    name: "news",
     initialState,
     reducers: {},
     extraReducers: (builder) => {
@@ -26,7 +26,7 @@ export const newsSlice = createSlice({
         })
         builder.addCase(getNews.fulfilled, (state, action) => {
             state.loading = false
-            state.categories = action.payload
+            state.news = action.payload
         })
         builder.addCase(getNews.rejected, (state, action) => {
             state.loading = false
