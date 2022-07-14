@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCategories } from '../../../features/categoriesReducer';
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './styles.css'
 
 const Sidebar = () => {
@@ -23,11 +23,11 @@ useEffect(()=>{
             <div className='categories-block'>
                 {categories && categories.map((element, index) => {
                     return (
-                        <>
-                        <div key={element._id} className='categories'>
+                        <div key={element._id}>
+                        <div className='categories'>
                         <Link className="category" to={`/category/${element._id}`}>{element.name}</Link>
                         </div>
-                        </>
+                        </div>
                     )
                 })} 
             </div>

@@ -6,16 +6,27 @@ import { getNews } from "../../../features/newsReducer";
 import { Link } from "react-router-dom";
 import "./styles.css";
 import { useState } from "react";
+import {PropTypes} from 'prop-types'
 
-const Main = (props) => {
+
+const Main = ({searcher}) => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.news.loading);
   const [two, setTwo] = useState(false)
-  const [strelka, setStrelka] = useState(true)
+  const [newSt, setNewSt] = useState(true)
+  // const [popular, setPopular] = useState(true)
 
-  function handleStrelka() {
-    setStrelka(!strelka)
+  Main.propTypes = {
+    searcher: PropTypes.array
+  } 
+
+  function handleNewSt() {
+    setNewSt(!newSt)
   }
+
+  // function handlePopular() {
+  //   setPopular(!popular)
+  // }
   
   useEffect(() => {
     dispatch(getNews());
@@ -34,16 +45,16 @@ const Main = (props) => {
       <div className="sort-block">
         <div className="sort">
           Сортировка:
-          <div onClick={handleStrelka} className="new-news">Новые {strelka ? "↓" : "↑"}</div>
-          <div className="popular-news">Популярные {}</div>
+          <div onClick={handleNewSt} className="new-news">Новые {newSt ? "↓" : "↑"}</div>
+          {/* <div onClick={handlePopular} className="popular-news">Популярные {popular ? "↓" : "↑"}</div> */}
         </div>
       </div>
-      <div className={strelka ? "news-block ne" : "news-block"}>
-        {props.searcher &&
-          props.searcher.map((element, index) => {
+      <div className={newSt ? "news-block ne" : "news-block"}>
+        {searcher &&
+          searcher.map((element, index) => {
                 return (
-                  <div className="allNews">
-                    <div key={element._id} className={two ? "newses two" : 'newses'}>
+                  <div key={element._id} className="allNews">
+                    <div className={two ? "newses two" : 'newses'}>
                       <div>
                         <img className="news-img" src={`http://localhost:4000/${element.img}`} alt="" />
                       </div>
@@ -60,7 +71,7 @@ const Main = (props) => {
           )
             }
       </div>
-    </div>
+      </div>
   );
 };
 

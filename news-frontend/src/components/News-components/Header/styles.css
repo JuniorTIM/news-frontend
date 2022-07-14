@@ -57,6 +57,18 @@
   border-radius: 2px;
 }
 
+.join-butt {
+  background-color: transparent;
+  color: #222222;
+  border: none;
+  margin-left: 1%;
+  margin-right: 1%;
+  font-size: 14px;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
 .header-hr {
   margin-bottom: 2.2%;
 }
@@ -117,15 +129,52 @@
   .sidenav a {font-size: 18px;}
 }
 
-/* .close-search-btn {
-  color: red;
-  background-color: transparent;
-  cursor: pointer;
-  width: 5px;
-  margin-left: 95%;
-  border: none;
+.join-block {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.55);
+  margin-right: 10%;
+  width: 20%;
+  z-index: 1;
+  background-color: white;
+  padding: 0px 7px 5px 7px;
 }
 
-<button className='close-search-btn' onClick={handleSearch}>x</button> */
+.join-block input {
+  outline: none;
+  height: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.vhod {
+  font-size: 24px;
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+}
+
+.go-to-signup {
+  padding-top: 5px;
+}
+
+.signup-button {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px;
+  cursor: pointer;
+  color: aquamarine;
+  text-align: center;
+}
+
+.join-button-2 {
+  margin-top: 3%;
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+  height: 30px;
+  border: none;
+  border-radius: 3px
+}
 
 @import url("https://fonts.googleapis.com/css2?family=Bitter&display=swap");

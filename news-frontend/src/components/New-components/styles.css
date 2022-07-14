@@ -1,26 +1,122 @@
 .newse {
-    display: flex;
-    flex-direction: column;
-    background-color: none;
+  display: flex;
+  flex-direction: column;
+  background-color: none;
 }
 
 .news-im {
-    width: 350px;
-    height: 350px;
-    margin-left: 35%;
-    margin-top: 2%;
-    box-shadow: 0px 3px 10px 2px rgba(34, 60, 80, 0.2);
+  width: 350px;
+  height: 350px;
+  margin-left: 35%;
+  margin-top: 2%;
+  box-shadow: 0px 3px 10px 2px rgba(34, 60, 80, 0.2);
 }
 
 .news-titl {
-    font-size: 26px;
-    /* margin-left: 15%; */
-    text-align: center;
-    margin-bottom: 2.5%;
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 2.5%;
 }
 
 .news-tex {
-    width: 40%;
-    margin-left: 31%;
-    margin-bottom: 2.5%;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-bottom: 2.5%;
+  font-size: 18px;
+  line-height: 24px;
 }
+
+.comments-amount {
+  font-size: 18px;
+  font-family: Montserrat, sans-serif;
+  font-weight: bold;
+  margin-left: 2%;
+  margin-top: 1%;
+}
+
+.comments-input {
+  outline: none;
+  margin-left: 2%;
+  margin-top: 1.5%;
+  width: 50%;
+  height: 90px;
+  padding: 5px;
+  margin-bottom: 0.4%;
+  border-radius: 2px;
+  border: 1px solid gray;
+}
+
+.submit-comment {
+  width: auto;
+  height: 30px;
+  padding: 0px 20px 0px 20px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 2%;
+  margin-bottom: 1%;
+  background-color: gray;
+  color: rgb(234, 234, 234);
+}
+
+.submit-comment-off {
+  opacity: 0.65;
+  width: auto;
+  height: 30px;
+  padding: 0px 20px 0px 20px;
+  border: 1px solid gray;
+  background-color: gray;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 2%;
+  margin-bottom: 1%;
+  color: rgb(234, 234, 234);
+}
+
+.comments-list {
+  margin-left: 2%;
+  margin-bottom: 2%;
+  margin-top: 2%;
+}
+
+.all-comment {
+  width: 52%;
+  background-color: gray;
+  border-radius: 3px;
+  margin-bottom: 3%;
+}
+
+.comment-text-block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-user {
+  color: rgb(47, 47, 255);
+  font-family: Montserrat;
+  font-size: 16px;
+  padding: 5px 10px 6px 10px;
+}
+
+.comment-text {
+  font-family: Montserrat;
+  padding: 0px 10px 5px 10px;
+  overflow-x: hidden;
+  word-break: break-all;
+}
+
+.comment-delete {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: red;
+}
+
+.error-block {
+  color: red;
+  font-size: 16px;
+  margin-left: 2%;
+  margin-top: 2%;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Bitter&family=Montserrat&display=swap");
