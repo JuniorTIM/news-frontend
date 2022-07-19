@@ -112,6 +112,40 @@
   color: red;
 }
 
+.threeTochka {
+  font-size: 25px;
+  margin-left: 96%;
+  cursor: pointer;
+}
+
+.tochkiMenu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 85%;
+  top: 32%;
+  width: auto;
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  padding: 10px;
+  border-radius: 2px;
+}
+
+.changeNew {
+  font-size: 14px;
+  border: none;
+  background-color: transparent;
+  padding-bottom: 8px;
+  cursor: pointer;
+}
+
+.deleteNew {
+  font-size: 14px;
+  border: none;
+  color: red;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 .error-block {
   color: red;
   font-size: 16px;

@@ -1,8 +1,9 @@
 /* eslint-disable array-callback-return */
+
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { getNews } from "../../features/newsReducer";
+import { deleteNews, getNews } from "../../features/newsReducer";
 import {
   createComment,
   deleteComment,
@@ -12,8 +13,8 @@ import "./styles.css";
 import { getUsers } from "../../features/usersReducer";
 
 const Main = () => {
+  
   const dispatch = useDispatch();
-
 
   const loading = useSelector((state) => state.news.loading);
   const news = useSelector((state) => state.news.news);
@@ -21,11 +22,12 @@ const Main = () => {
   const comments = useSelector((state) => state.comments.comments);
   const error = useSelector((state) => state.comments.error);
   const userId = useSelector((state) => state.users.user);
-  const token = useSelector(state => state.users.token)
-
+  const role = useSelector((state) => state.users.role);
+  const token = useSelector((state) => state.users.token);
 
   const { id } = useParams();
   const [text, setText] = useState("");
+  const [tochki, setTochki] = useState(false);
 
   function handleText(e) {
     setText(e.target.value);
@@ -38,6 +40,15 @@ const Main = () => {
 
   function handleDelete(i) {
     dispatch(deleteComment(i));
+  }
+
+  function handleTochki() {
+    setTochki(!tochki);
+  }
+
+  function handleDeleteNew(id) {
+    dispatch(deleteNews(id));
+    window.location.href = "/";
   }
 
   useEffect(() => {
@@ -68,6 +79,24 @@ const Main = () => {
             <div key={item._id}>
               <div className="allNew">
                 <div key={item._id} className="newse">
+                  {role === "admin" && (
+                    <>
+                      <div className="threeTochka" onClick={handleTochki}>
+                        ⋮
+                      </div>
+                      {tochki && (
+                        <div className="tochkiMenu">
+                          <button className="changeNew">Редактировать</button>
+                          <button
+                            className="deleteNew"
+                            onClick={() => handleDeleteNew(item._id)}
+                          >
+                            Удалить
+                          </button>
+                        </div>
+                      )}
+                    </>
+                  )}
                   <div>
                     <img
                       className="news-im"
@@ -83,30 +112,30 @@ const Main = () => {
                 </div>
               </div>
               <hr />
-              {token ? (
+              {token || role === "admin" ? (
                 <div>
-                <div className="comments-block">
-                  {loading && (
-                    <div className="load">
-                      <hr />
-                      <hr />
-                      <hr />
-                      <hr />
+                  <div className="comments-block">
+                    {loading && (
+                      <div className="load">
+                        <hr />
+                        <hr />
+                        <hr />
+                        <hr />
+                      </div>
+                    )}
+                    <div className="comments-amount">
+                      {comments.length === 1
+                        ? comments.length + " Комментарий"
+                        : comments.length + " Комментариев"}
                     </div>
-                  )}
-                  <div className="comments-amount">
-                    {comments.length === 1
-                      ? comments.length + " Комментарий"
-                      : comments.length + " Комментариев"}
+                    <textarea
+                      placeholder="Напишите комментарий..."
+                      className="comments-input"
+                      onChange={handleText}
+                      type="text"
+                      value={text}
+                    />
                   </div>
-                  <textarea
-                    placeholder="Напишите комментарий..."
-                    className="comments-input"
-                    onChange={handleText}
-                    type="text"
-                    value={text}
-                  />
-                </div>
                   <button
                     onClick={handleCreate}
                     disabled={text && false}
@@ -114,7 +143,7 @@ const Main = () => {
                   >
                     Отправить
                   </button>
-                  </div>
+                </div>
               ) : (
                 <div className="error-block">Войдите в аккаунт</div>
               )}
@@ -134,13 +163,15 @@ const Main = () => {
                                   <div className="comment-text">
                                     {item.text}
                                   </div>
-                                  {userId === item.name && (
+                                  {userId === item.name || role === "admin" ? (
                                     <button
                                       onClick={() => handleDelete(item._id)}
                                       className="comment-delete"
                                     >
                                       x
                                     </button>
+                                  ) : (
+                                    ""
                                   )}
                                 </div>
                               </div>

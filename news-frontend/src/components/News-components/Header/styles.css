@@ -141,6 +141,15 @@
   padding: 0px 7px 5px 7px;
 }
 
+.admin_panel {
+  cursor: pointer;
+  margin-top: 0.35%;
+  margin-right: 2%;
+  font-family: "Bitter";
+  text-decoration: none;
+  color: black;
+}
+
 .join-block input {
   outline: none;
   height: 20px;

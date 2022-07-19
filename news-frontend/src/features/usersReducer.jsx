@@ -8,6 +8,7 @@ const initialState = {
   token: localStorage.getItem("token"),
   name: localStorage.getItem("name"),
   user: localStorage.getItem("user"),
+  role: localStorage.getItem("role")
 };
 
 export const getUsers = createAsyncThunk("users/get", async (_, thunkAPI) => {
@@ -38,6 +39,26 @@ export const createUser = createAsyncThunk("users/add", async ({login, password}
    }
 })
 
+export const deleteUser = createAsyncThunk("delete/user", async (id, thunkAPI) => {
+  try {
+    const res = await fetch(`http://localhost:4000/user/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+     const data = res.json()
+ 
+     if (data.error) {
+       return thunkAPI.rejectWithValue(data.error)
+     } 
+ 
+     return thunkAPI.fulfillWithValue(id);
+   } catch (e) {
+    return thunkAPI.rejectWithValue(e);
+   }
+})
+
 export const auth = createAsyncThunk('login/auth', async ({login,password}, thunkAPI) => {
   try {
     const res =  await fetch("http://localhost:4000/login", {
@@ -53,7 +74,7 @@ export const auth = createAsyncThunk('login/auth', async ({login,password}, thun
       localStorage.setItem("token", data.token)
       localStorage.setItem("name", data.name)
       localStorage.setItem("user", data.user)
-
+      localStorage.setItem("role", data.role)
       return thunkAPI.fulfillWithValue(data)
      }
    } catch (e) {
@@ -65,6 +86,7 @@ export const logOut = createAsyncThunk('logOut', async(_, thunkAPI) => {
   localStorage.removeItem('token')
   localStorage.removeItem('name')
   localStorage.removeItem("user")
+  localStorage.removeItem("role")
 })
 
 export const usersSlice = createSlice({
@@ -96,8 +118,8 @@ export const usersSlice = createSlice({
       state.error = null
       state.token = action.payload.token
       state.user = action.payload.user
+      state.role = action.payload.role
       state.loading = false
-
     })
     builder.addCase(auth.rejected, (state, action) => {
       state.error = action.payload
@@ -112,6 +134,21 @@ export const usersSlice = createSlice({
       state.name = null
       state.user = null
       state.error = null
+      state.role = null
+    })
+
+    builder.addCase(deleteUser.pending, (state, action) => {
+      state.loading = true
+      state.error = null
+    })
+    builder.addCase(deleteUser.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = false
+      state.users = state.users.filter((user) => user._id !== action.payload);
+    })
+    builder.addCase(deleteUser.rejected, (state, action) => {
+      state.error = action.payload
+      state.loading = false
     })
   },
 });

@@ -20,9 +20,8 @@ const Header = ({ text, setText }) => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const token = useSelector(state => state.users.token)
+  const role = useSelector(state => state.users.role)
   const name = localStorage.getItem("name");
-
-  console.log({text, setText})
 
   Header.propTypes = {
     text: PropTypes.string,
@@ -112,6 +111,7 @@ const Header = ({ text, setText }) => {
         )}
         <button className="sidebar-button" onClick={handleSidebar}></button>
         <div className="search-block">
+          {role === "admin" && <Link to='/admin' className="admin_panel">PANEL</Link>}
           <div className="search-img" onClick={handleSearch}></div>
           {search ? (
             <div className="openSearch">

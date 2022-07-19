@@ -1,0 +1,137 @@
+.admin_title {
+  text-align: center;
+  font-size: 25px;
+  font-style: Montserrat;
+  padding: 12px;
+}
+
+.admin_tools {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 3.3%;
+  margin-bottom: 24%;
+}
+
+.users_list {
+  background-color: transparent;
+  border: none;
+}
+
+.users_list_button {
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.users_map {
+  width: 10%;
+  padding-right: 70px;
+  position: absolute;
+  left: 10%;
+  height: 220px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.one_user {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  width: 150%;
+}
+
+.ban_user {
+  color: red;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.users_search {
+  outline: none;
+  margin-top: 8%;
+}
+
+.create_news {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+}
+
+.create_news_form {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: rgb(191, 191, 191);
+  padding: 15px;
+  border: 1px solid rgb(191, 191, 191);
+  border-radius: 3px;
+  top: 53%;
+  left: 39%;
+}
+
+.create_news_form input {
+  outline: none;
+  height: 20px;
+}
+
+.create_news_form textarea {
+  outline: none;
+}
+
+.create_news_form select {
+  outline: none;
+}
+
+.create_news_form div {
+  padding-bottom: 8px;
+  padding-top: 5px;
+}
+
+.create_news_btn {
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+  border: 1px solid blue;
+  border-radius: 2px;
+  margin-top: 2%;
+  height: 25px;
+}
+
+.create_category {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.category_create_form {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: rgb(191, 191, 191);
+  padding: 15px;
+  border: 1px solid rgb(191, 191, 191);
+  border-radius: 3px;
+  top: 56%;
+  right: 8%;
+}
+
+.category_create_form input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 20px;
+  outline: none;
+}
+
+.create_category_btn {
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+  border: 1px solid blue;
+  border-radius: 2px
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Bitter&family=Montserrat&display=swap");

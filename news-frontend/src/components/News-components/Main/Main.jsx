@@ -51,7 +51,7 @@ const Main = ({searcher}) => {
       </div>
       <div className={newSt ? "news-block ne" : "news-block"}>
         {searcher &&
-          searcher.map((element, index) => {
+          searcher.map((element) => {
                 return (
                   <div key={element._id} className="allNews">
                     <div className={two ? "newses two" : 'newses'}>

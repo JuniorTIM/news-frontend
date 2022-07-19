@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   categories: [],
   error: null,
-  loading: false
+  loading: false,
 };
 
 
@@ -17,15 +17,14 @@ export const getCategories = createAsyncThunk('categories/get', async (_, thunkA
     }
 })
 
-export const createCategory = createAsyncThunk('categories/add', async (text, thunkAPI) => {
-    const state = thunkAPI.getState()
+export const createCategory = createAsyncThunk('categories/add', async (categoryText, thunkAPI) => {
     try {
-        const res = await fetch("http://localhost:4000/admin/category", {
+        const res = await fetch("http://localhost:4000/category", {
             method: "POST",
             headers: {
-              Authorization: `Bearer ${state.auth.token}`,
               "Content-Type": "application/json",
             },
+            body: JSON.stringify({ name: categoryText }),
           })
         return res.json()
     } catch (e) {
@@ -49,6 +48,18 @@ export const categoriesSlice = createSlice({
             state.loading = false
             state.error = action.payload
         })
+
+        builder.addCase(createCategory.pending, (state, action) => {
+            state.loading = true
+        })
+        builder.addCase(createCategory.fulfilled, (state, action) => {
+            state.loading = false
+            state.categories.push(action.payload);
+        })
+        builder.addCase(createCategory.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+          });
     }
 })
 
