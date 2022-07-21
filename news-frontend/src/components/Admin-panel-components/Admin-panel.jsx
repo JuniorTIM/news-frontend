@@ -13,7 +13,9 @@ const Panel = () => {
   const categories = useSelector((state) => state.categories.categories);
 
   const [text, setText] = useState("");
+  const [img, setImg] = useState(null)
   const [categoryText, setCategoryText] = useState('')
+  const [categoryID, setCategoryID] = useState(null)
   const [titleText, setTitleText] = useState('')
   const [newsText, setNewsText] = useState('')
   const [list, setList] = useState(false);
@@ -61,11 +63,11 @@ const Panel = () => {
     setCategoryText('')
   }
 
-  // function handleCreateNewsBtn() {
-  //   dispatch(createNews({img, categoryId, titleText, newsText}))
-  //   setTitleText('')
-  //   setNewsText('')
-  // }
+  function handleCreateNewsBtn() {
+    dispatch(createNews({ img, titleText, newsText, categoryID}))
+    setTitleText('')
+    setNewsText('')
+  }
 
   function handleCreateCategory() {
     setCategoryCreate(!categoryCreate);
@@ -106,7 +108,7 @@ const Panel = () => {
                 {searcher &&
                   searcher.map((element, index) => {
                     return (
-                      <div className="one_user">
+                      <div key={index} className="one_user">
                         <div>{index + 1})</div>
                         <div>{element.login}</div>
                         <button
@@ -129,19 +131,19 @@ const Panel = () => {
           {newsCreate ? (
             <div className="create_news_form">
               <div>Добавьте фото:</div>
-              <input type="file" />
+              <input name="assets" type="file" onChange={(e) => setImg(e.target.files[0])} />
               <div>Категория:</div>
-              <select type="text">
+              <select onChange={(e) => setCategoryID(e.target.value)} type="text">
                 <option disabled>Выберите категорию</option>
-                {categories.map((element) => {
-                  return <option>{element.name}</option>;
+                {categories.map((element, index) => {
+                  return <option key={index} value={element._id}>{element.name}</option>;
                 })}
               </select>
               <div>Заголовок:</div>
               <input onChange={handleTitleText} value={titleText} type="text" />
               <div>Текст:</div>
               <textarea onChange={handleNewsText} value={newsText} type="text" />
-              {/* <button onClick={handleCreateNewsBtn} className="create_news_btn">Запостить</button> */}
+              <button onClick={handleCreateNewsBtn} className="create_news_btn">Запостить</button>
             </div>
           ) : null}
         </div>
